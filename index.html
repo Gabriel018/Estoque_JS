@@ -5,42 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    
     <title>Estoque</title>
 </head>
-<body onload="">
+<body background="img/18303726.jpg" onload="carregar_total('quantEstoque')">
     <div class="estoque">
-        <img src="img/estoque.png" style="height: 90px;width: 90px;" alt="">
-        <p>Estoque:<span id="quantEstoque">0</span></p>
+        <img src="img/estoque.png" style="height: 100px;width: 100px;" alt="">
+        <p>Produtos em Estoque:<span id="quantEstoque">0</span></p>
     </div>
+    <h2 style="text-align: center;">Sistema de Estoque simplificado</h2>
     <div class="main">
-        <form class="form_cad">
-           
-            <div class="tabela">
-         
-                  <p>Nome do produto:<input id="txt_prod"></p>
-                  <p>Codigo do produto:<input id="txt_cod_prod"></p>
-                  <p>Quantide         :
+     
+        <div class="form_cad">
+          
+            <form class="tabela">
+                  <p>Nome do produto:   <input id="txt_prod"></p>
+                  <p>Codigo do produto:  <input id="txt_cod"> </p>
+                  <p>Quantide:
                    <select id="txt_quant_prod">
                    <option value="1">1</option>
-                   <option value="2">3</option>
+                   <option value="2">2</option>
                    <option value="3">3</option>
                    <option value="4">4</option>
                    <option value="5">5</option>
                    <option value="6">6</option>
                    <option value="7">7</option>
                    <option value="8">8</option>
+                   <option value="8">9</option>
+                   <option value="8">10</option>
                     </select></p>
+
+                    <div class="btn-div">
+                        <button  class="btn" id="cad_prod" onclick="validarProd('txt_prod','txt_cod','txt_quant_prod')">Cadastrar </button>
+                        <button  class="btn" id="verificar_prod" onclick="window.open('estoque.html') " >Consultar estoque</button>
+                        <button  class="btn" id="limpar" onclick="limp()" >Limpar</button>
+        
+                    </div>
+                </div>
+                
                   
-                  <div class="btn-div">
-                      <button class="btn">cadastrar</button>
-                      <button class="btn">verificar estoque</button>
-                      <button class="btn">Limpar</button>
-      
-                  </div>  
-                 
                
-            </div>
-       </form>
+            </form>
     </div>
      
 
