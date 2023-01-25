@@ -1,5 +1,6 @@
 
 
+
 function validarProd(idproduto,idcodigo,idquantidade){
     let nome = document.getElementById(idproduto).value
     let codigo = document.getElementById(idcodigo).value
@@ -11,9 +12,9 @@ function validarProd(idproduto,idcodigo,idquantidade){
     }
     else{
         cadastrar_produto(nome,codigo,parseInt(quantidade))
+
     }
 }
-
 
 function cadastrar_produto(produto,coding,quant){
 let novo_produto = {nome:produto,codigo:coding,quantidade:quant}
@@ -24,7 +25,7 @@ let produtos = localStorage.getItem('produtos')
 produtos = JSON.parse(produtos)
  produtos.push(novo_produto)
  localStorage.setItem('produtos',JSON.stringify(produtos))
- alert("Os produto"  +produto+ " foi cadastrado na quantidade " +quant)
+ alert("Os produtos "  +produto+ " foram cadastrado na quantidade " +quant)
  atualizar_estoque("quantEstoque")
  location.reload()
 
@@ -32,12 +33,14 @@ produtos = JSON.parse(produtos)
 
 function atualizar_estoque(idEstoque){
     localStorage.setItem("quantEstoque",++document.getElementById(idEstoque).innerHTML)
+
 }
 
 function carregar_total(idEstoque){
     let totalestoque = localStorage.getItem("quantEstoque")
     if (totalestoque == null) totalestoque = 0
     document.getElementById(idEstoque).innerHTML = totalestoque
+
 }
 
 function listar_Estoque(){
@@ -47,15 +50,31 @@ function listar_Estoque(){
  produtos = JSON.parse(produtos)
 
  produtos.forEach(produto=> {
-    document.write('<ul>')
-    document.write('<li>Produto: '+produto.nome+'</li>')
-    document.write('<li> codigo:  '+produto.codigo+'</li>')
-    document.write('<li> quantidade:  '+produto.quantidade+'</li>')
-    document.write('</ul>')
+    document.write('<br>')
+    
+    document.write('<th style=" border: 1px solid;" >')
+    document.write('<td> Produto: ' +produto.nome+'|','</td>')
+    document.write('<td>  Codigo:  '+produto.codigo+ '|', '</td>')
+    document.write('<td> quantidade:  '+produto.quantidade+' unidade(s) </td>')
+    document.write('</th>')
+    document.write('<button onclick="excluir_item()"> Excluir item</button>')
  });
 
 }
 function limp(){
-    alert("Dados apagados")
-   localStorage.clear()
+localStorage.clear()    
+
 }
+
+function excluir_item(index){
+    let produtos = localStorage.getItem('produtos')
+    produtos = JSON.parse(produtos)
+    produtos.pop()
+    localStorage.setItem('produtos',JSON.stringify(produtos))
+    console.log(produtos)
+    alert("opa")
+    location.reload()
+       }
+    
+
+
