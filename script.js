@@ -48,16 +48,19 @@ function listar_Estoque(){
  document.write('<h2 style="text-align: center;">Produtos em Estoque</h2>')
  document.write('<style>body {background-image: url("img/29116.jpg");background-repeat: no-repeat;background-size: 1292px 900px;}</style></body>')
  produtos = JSON.parse(produtos)
-
+ document.write('<a style="font-size:20px; border-radius: 5px;  padding: 15px; background-color: rgb(99, 181, 219);" href="index.html">Menu</a>')
+ document.write('<br>')
+ document.write('<br>')
  produtos.forEach(produto=> {
     document.write('<br>')
-    
-    document.write('<th style=" border: 1px solid;" >')
+    document.write('<th>')
     document.write('<td> Produto: ' +produto.nome+'|','</td>')
     document.write('<td>  Codigo:  '+produto.codigo+ '|', '</td>')
     document.write('<td> quantidade:  '+produto.quantidade+' unidade(s) </td>')
+    document.write('<button style="margin-left: 10px;" onclick="excluir_item()"> Excluir </button>')
     document.write('</th>')
-    document.write('<button onclick="excluir_item()"> Excluir item</button>')
+
+
  });
 
 }
@@ -65,6 +68,13 @@ function limp(){
 localStorage.clear()    
 
 }
+
+
+function Menu_back(){ 
+   window.open('index.html')
+
+    }
+
 
 function excluir_item(index){
     let produtos = localStorage.getItem('produtos')
